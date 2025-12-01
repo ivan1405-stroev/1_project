@@ -11,8 +11,8 @@ public class Main {
         printMenu();
         int userInput = scanner.nextInt();
 
-        while (userInput != 4){
-            switch (userInput){
+        while (userInput != 4) {
+            switch (userInput) {
                 case 1:
                     stepTracker.addStepsToDays();
                     break;
@@ -33,7 +33,7 @@ public class Main {
 
     }
 
-    private static void printMenu(){
+    private static void printMenu() {
         System.out.println("""
                 Выберите действие:\s
                 1. Ввести количество шагов за определенный день\s

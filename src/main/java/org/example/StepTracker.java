@@ -23,13 +23,13 @@ public class StepTracker {
     public void addStepsToDays() {
         System.out.println("Введите номер месяца (0-январь ... 11 - декабрь): ");
         int month = scanner.nextInt();
-        if (month < 0 || month > 12) {
+        if (month < 0 || month > 11) {
             System.out.println("Введен некорректный номер месяца");
             return;
         }
         System.out.println("Введите номер дня: ");
         int day = scanner.nextInt();
-        if (day < 0 || day > 30) {
+        if (day < 1 || day > 30) {
             System.out.println("Введен некорректный номер дня");
             return;
         }
@@ -86,7 +86,7 @@ public class StepTracker {
         System.out.println("Среднее количество шагов: " + sumSteps / monthData.stepsPerDay.length);
     }
 
-    private void printDistanceForAMonth(int month){
+    private void printDistanceForAMonth(int month) {
         int steps = 0;
         monthData = monthToData.get(month);
         for (int i = 0; i < monthData.stepsPerDay.length; i++) {
@@ -95,7 +95,7 @@ public class StepTracker {
         System.out.println("Пройденная дистанция: " + converter.stepToDistance(steps));
     }
 
-    private void printKilocalories(int month){
+    private void printKilocalories(int month) {
         int steps = 0;
         monthData = monthToData.get(month);
         for (int i = 0; i < monthData.stepsPerDay.length; i++) {
@@ -104,16 +104,16 @@ public class StepTracker {
         System.out.println("Количество сожженных килокалорий: " + converter.stepToKilocalories(steps));
     }
 
-    private void printBestEpisode(int month){
+    private void printBestEpisode(int month) {
         ArrayList<Integer> assist = new ArrayList<>();
         int sumBestDays = 0;
         monthData = monthToData.get(month);
 
         for (int i = 0; i < monthData.stepsPerDay.length; i++) {
-            if (monthData.stepsPerDay[i] > target){
+            if (monthData.stepsPerDay[i] > target) {
                 sumBestDays++;
             }
-            if (monthData.stepsPerDay[i] < target){
+            if (monthData.stepsPerDay[i] < target) {
                 assist.add(sumBestDays);
                 sumBestDays = 0;
             }
@@ -130,10 +130,10 @@ public class StepTracker {
 
     }
 
-    public void changeTargetValue(){
-        System.out.println("Введите новую цель по шагам в день (текущее значение = " + target +"): ");
+    public void changeTargetValue() {
+        System.out.println("Введите новую цель по шагам в день (текущее значение = " + target + "): ");
         int newTarget = scanner.nextInt();
-        if (newTarget < 0){
+        if (newTarget < 0) {
             System.out.println("Значение не может быть отрицательным!");
             return;
         }
