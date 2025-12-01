@@ -1,17 +1,44 @@
 package org.example;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        StepTracker stepTracker = new StepTracker();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        Scanner scanner = new Scanner(System.in);
+        printMenu();
+        int userInput = scanner.nextInt();
+
+        while (userInput != 4){
+            switch (userInput){
+                case 1:
+                    stepTracker.addStepsToDays();
+                    break;
+                case 2:
+                    stepTracker.statistic();
+                    break;
+                case 3:
+                    stepTracker.changeTargetValue();
+                    break;
+                default:
+                    System.out.println("Такой команды нет!");
+                    break;
+            }
+
+            printMenu();
+            userInput = scanner.nextInt();
         }
+
+    }
+
+    private static void printMenu(){
+        System.out.println("""
+                Выберите действие:\s
+                1. Ввести количество шагов за определенный день\s
+                2. Напечатать статистику за определенный месяц\s
+                3. Изменить цель по количеству шагов в день\s
+                4. Выйти из приложения""");
     }
 }
